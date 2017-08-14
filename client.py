@@ -25,17 +25,17 @@ class EurekaClient:
 
     def __init__(self, eureka_urls, instance_definition=None, verbose=False):
         """
-        eureka_url is the address to send requests to.
+        eureka_urls is the address to send requests to.
         instance_definition is description of service
             NOT conforming (as of 16.05.17) to schema available in
             https://github.com/Netflix/eureka/wiki/Eureka-REST-operations
         Basic operations:
         service side:
-            client = EurekaClient('localhost:8765', {'ipAddr': '127.0.0.1', 'port': 80, 'app': 'myapp'})
+            client = EurekaClient(['localhost:8765', ], {'ipAddr': '127.0.0.1', 'port': 80, 'app': 'myapp'})
             client.register()
             client.heartbeat()
         client side:
-            client = EurekaClient('localhost:8765')
+            client = EurekaClient(['localhost:8765', ])
             try:
                 client.query(app='myapp')
             except EurekaClientError:
