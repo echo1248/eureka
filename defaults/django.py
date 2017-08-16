@@ -9,13 +9,14 @@ from django.conf import settings
 from eureka import defaults
 from eureka import SimpleEurekaServiceWrapper
 
-if settings:
-    try:
-        eureka_urls = getattr(settings, 'EUREKA_URLS', defaults.eureka_urls)
-        instance = getattr(settings, 'INSTANCE', defaults.instance)
-        heartbeat = getattr(settings, 'HEARTBEAT', defaults.heartbeat)
-        service_wrapper = SimpleEurekaServiceWrapper(eureka_urls, instance, heartbeat)
-        service_wrapper.run()
-    except:
-        pass
+
+service_wrapper = None
+
+if service_wrapper is None:
+    eureka_urls = getattr(settings, 'EUREKA_URLS', defaults.EUREKA_URLS)
+    instance = getattr(settings, 'INSTANCE', defaults.INSTANCE)
+    heartbeat = getattr(settings, 'HEARTBEAT', defaults.HEARTBEAT)
+    service_wrapper = SimpleEurekaServiceWrapper(eureka_urls, instance, heartbeat)
+    service_wrapper.run()
+
 
