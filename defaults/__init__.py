@@ -5,7 +5,7 @@
 
 APP = 'eureka-test'
 EUREKA_URLS = ['http://localhost:8761', ]
-HEARTBEATR = 5.0
+HEARTBEAT = 5.0
 INSTANCE = {
      'ipAddr': 'localhost',
      'port': 7777,
